@@ -1,0 +1,64 @@
+###
+POST http://localhost:9000/api/users/register
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "password": "Hola",
+    "age": 30,
+    "email": "JohnDoe33@hotmail.com"
+}
+
+###
+POST http://localhost:9000/api/users/register
+Content-Type: application/json
+
+{
+    "name": "Joan Pérez",
+    "password": "securepassword",
+    "age": 30,
+    "email": "joan@example.com"
+}
+
+###
+POST http://localhost:9000/api/users/register
+Content-Type: application/json
+
+{
+    "name": "Maria López",
+    "password": "password123",
+    "age": 25,
+    "email": "maria@example.com"
+}
+
+###
+POST http://localhost:9000/api/users/register
+Content-Type: application/json
+
+{
+    "name": "Carlos Gómez",
+    "password": "mypassword",
+    "age": 40,
+    "email": "carlos@example.com"
+}
+
+###
+GET http://localhost:9000/api/users
+
+###
+POST http://localhost:9000/api/subjects
+Content-Type: application/json
+
+{
+    "name": "EA23",
+    "teacher": "67b3a86e2e19728349aec5a4",
+    "alumni": ["67b3a8bc2e19728349aec5a6", "67bd9f11b61054031c9392bb", "67cecafbd8c642fde170ea5c"]
+}
+
+### 
+GET http://localhost:9000/api/subjects
+
+
+### 
+GET http://localhost:9000/api/subjects/alumni/EA23
+

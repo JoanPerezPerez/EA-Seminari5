@@ -1,10 +1,11 @@
 // src/controllers/user_controller.ts
-import { saveMethod, createUser, getAllUsers, getUserById, updateUser, deleteUser } from '../users/user_service.js';
-
+import { saveMethod, createUser, getAllUsers, getUserById, updateUser, deleteUser, loginUser } from '../users/user_service.js';
 import express, { Request, Response } from 'express';
+//import createToken from '../utils/createToken.js';
 
 export const saveMethodHandler = async (req: Request, res: Response) => {
     try {
+        console.log('Datos recibidos:', req.body);
         const data = saveMethod();
         res.json(data);
     } catch (error: any) {
@@ -47,6 +48,20 @@ export const deleteUserHandler = async (req: Request, res: Response) => {
     try {
         const data = await deleteUser(req.params.id);
         res.json(data);
+    } catch (error: any) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+export const loginUserHandler = async (req: Request, res: Response) => {
+    try {
+        console.log('Datos recibidos:', req.body);
+        const data = await loginUser(req.body);
+        res.json(data);
+        //const token = createToken(data);
+
+        // Devolver el token en la respuesta
+        //res.json({ token });
     } catch (error: any) {
         res.status(500).json({ message: error.message });
     }

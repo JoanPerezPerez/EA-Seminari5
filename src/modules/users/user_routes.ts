@@ -6,7 +6,8 @@ import {
     getAllUsersHandler,
     getUserByIdHandler,
     updateUserHandler,
-    deleteUserHandler
+    deleteUserHandler,
+    loginUserHandler
 } from '../users/user_controller.js';
 
 const router = express.Router();
@@ -35,7 +36,7 @@ router.get('/main', saveMethodHandler);
 
 /**
  * @openapi
- * /api/users:
+ * /api/users/register:
  *   post:
  *     summary: Crea un nuevo usuario
  *     description: Añade los detalles de un nuevo usuario.
@@ -58,7 +59,7 @@ router.get('/main', saveMethodHandler);
  *       201:
  *         description: Usuario creado exitosamente
  */
-router.post('/users', createUserHandler);
+router.post('/users/register', createUserHandler);
 
 /**
  * @openapi
@@ -176,5 +177,7 @@ router.put('/users/:id', updateUserHandler);
  *         description: Usuario no encontrado
  */
 router.delete('/users/:id', deleteUserHandler);
+
+router.post('/users/login', loginUserHandler);
 
 export default router;

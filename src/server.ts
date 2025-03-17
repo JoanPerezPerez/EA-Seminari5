@@ -6,6 +6,7 @@ import forumRoutes from './modules/forum/forum_routes.js'; // Nota el .js al fin
 import { corsHandler } from './middleware/corsHandler.js';
 import { loggingHandler } from './middleware/loggingHandler.js';
 import { routeNotFound } from './middleware/routeNotFound.js';
+import subjectRoutes from './modules/subjects/subject_routes.js'; // Import subjectRoutes
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
 
@@ -44,7 +45,7 @@ const swaggerOptions = {
             }
         ]
     },
-    apis: ['./build/modules/users/*.js', './build/modules/forum/*.js'] // Asegúrate de que esta ruta apunta a tus rutas
+    apis: ['./build/modules/users/*.js', './build/modules/forum/*.js', './build/modules/subjects/*.js'] // Asegúrate de que esta ruta apunta a tus rutas
 };
 
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
@@ -58,6 +59,7 @@ app.use(corsHandler);
 //rutas
 app.use('/api', userRoutes);
 app.use('/api', forumRoutes);
+app.use('/api', subjectRoutes);
 // Rutes de prova
 app.get('/', (req, res) => {
     res.send('Welcome to my API');
